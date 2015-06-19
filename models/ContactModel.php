@@ -17,9 +17,12 @@ class ContactModel extends HomeModel {
         ) );
     }
 
-    public function getContacts() {
-        $user = \Lib\Auth::get_instance()->get_logged_user();
-        $userId = $user['user_id'];
+    /**
+     * @param $userId
+     * @return mixed
+     */
+    public function getContacts($userId) {
+
         $contacts = $this->dbconn->prepare('SELECT id, name, phone, email, address FROM contacts WHERE userId = ?');
         $contacts->bind_param('s', $userId);
         $contacts->execute();

@@ -16,6 +16,11 @@ class UserModel extends HomeModel {
         ) );
     }
 
+    /**
+     * @param $username
+     * @param $password
+     * @return bool
+     */
     public function register($username, $password) {
         $statement = $this->dbconn->prepare( "SELECT id FROM users WHERE username = ? LIMIT 1" );
         $statement->bind_param('ss', $username );

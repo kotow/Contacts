@@ -31,14 +31,22 @@ class HomeModel {
 		$db = \Lib\Database::get_instance();
 		$this->dbconn = $db::get_db();
 	}
-	
-	public function get( $id ) {
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function get( $id ) {
 		$results = $this->find( array( 'where' => 'id = ' .$id ) );
 		
 		return $results;
 	}
-	
-	public function add( $pairs ) {
+
+    /**
+     * @param $pairs
+     * @return int
+     */
+    public function add( $pairs ) {
 		// Get keys and values separately
 		$keys = array_keys( $pairs );
 		$values = array();
