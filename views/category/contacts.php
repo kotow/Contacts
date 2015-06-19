@@ -6,15 +6,15 @@
         <th>Address</th>
         <th>Action</th>
     </tr>
-    <?php foreach($contacts as $contact):?>
+    <?php while($row = $contacts->fetch_assoc()):?>
         <tr>
-            <td> <?=$contact[1];?></td>
-            <td><?=$contact[2];?></td>
-            <td><?=$contact[3];?></td>
-            <td><?=$contact[4];?></td>
+            <td> <?=$row['name'];?></td>
+            <td><?=$row['phone'];?></td>
+            <td><?=$row['email'];?></td>
+            <td><?=$row['address'];?></td>
             <td>Edit/Delete</td>
         </tr>
-    <?php endforeach ?>
+    <?php endwhile ?>
 </table>
 
 <br/>

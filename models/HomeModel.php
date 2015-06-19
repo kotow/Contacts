@@ -1,16 +1,16 @@
 <?php
-
 namespace Models;
 
-class HomeModel {
-	
+class HomeModel
+{
 	protected $table;
 	protected $where;
 	protected $columns;
 	protected $limit;
 	protected $dbconn;
 	
-	public function __construct( $args = array() ) {
+	public function __construct( $args = array() )
+    {
 		$args = array_merge( array(
 			'where' => '',
 			'columns' => '*',
@@ -36,7 +36,8 @@ class HomeModel {
      * @param $id
      * @return array
      */
-    public function get( $id ) {
+    public function get( $id )
+    {
 		$results = $this->find( array( 'where' => 'id = ' .$id ) );
 		
 		return $results;
@@ -46,7 +47,8 @@ class HomeModel {
      * @param $pairs
      * @return int
      */
-    public function add( $pairs ) {
+    public function add( $pairs )
+    {
 		// Get keys and values separately
 		$keys = array_keys( $pairs );
 		$values = array();
@@ -68,7 +70,8 @@ class HomeModel {
 		return $this->dbconn->affected_rows;
 	}
 	
-	public function delete( $id ) {
+	public function delete( $id )
+    {
 		$query = "DELETE FROM {$this->table} WHERE id=" . intval( $id );
 		
 		$this->dbconn->query( $query );
@@ -76,7 +79,8 @@ class HomeModel {
 		return $this->dbconn->affected_rows;
 	}
 	
-	public function update( $model ) {
+	public function update( $model )
+    {
 		$query = "UPDATE " . $this->table . " SET ";
 		
 		foreach( $model as $key => $value ) {
@@ -91,7 +95,8 @@ class HomeModel {
 		return $this->dbconn->affected_rows;
 	}
 	
-	public function find( $args = array() ) {
+	public function find( $args = array() )
+    {
 		$args = array_merge( array(
 			'table' => $this->table,
 			'where' => '',
@@ -120,7 +125,8 @@ class HomeModel {
 		return $results;
 	}
 	
-	protected function process_results( $result_set ) {
+	protected function process_results( $result_set )
+    {
 		$results = array();
 		
 		if( ! empty( $result_set ) && $result_set->num_rows > 0) {

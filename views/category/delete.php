@@ -1,14 +1,13 @@
-<div id="delete-phone-form" class="dialog-box">
-    <h1>Confirm Delete Group?</h1>
+<form method="POST" id="add-phone-form" class="dialog-box">
+    <h1>Edit Group</h1>
     <p>
         <label for="personName">Name:</label>
-        <input type="text" id="Name" disabled="disabled">
+        <input type="text" id="person" value="<?=$cat['name']?>" name="name" disabled />
     </p>
     <p class="buttons">
-        <a href="#" class="button" id="delete">Delete</a>
-        <a href="#" class="button" onclick="logged()">Cancel</a>
+        <input type="submit" class="button" value="Delete" name="delete" />
+        <a href="/category/">Cancel</a>
     </p>
-</div>
+</form>
 
 <br/>
-	

@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kotow-PC
- * Date: 6/18/2015
- * Time: 7:41 PM
- */
-
 namespace Models;
 
 class UserModel extends HomeModel {
@@ -24,11 +17,8 @@ class UserModel extends HomeModel {
     public function register($username, $password) {
         $statement = $this->dbconn->prepare( "SELECT id FROM users WHERE username = ? LIMIT 1" );
         $statement->bind_param('ss', $username );
-
         $statement->execute();
-
         $result_set = $statement->num_rows;
-
         if($result_set == 0){
             $statement = $this->dbconn->prepare( "INSERT INTO users (username, password) VALUES ( ?, ? )" );
             $statement->bind_param('ss', $username, md5($password ));
@@ -38,6 +28,5 @@ class UserModel extends HomeModel {
         } else {
             return false;
         }
-
     }
 }

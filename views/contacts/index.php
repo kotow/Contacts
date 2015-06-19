@@ -16,7 +16,7 @@
         </tr>
     <?php endforeach ?>
 </table>
-<p><a href="/category/add" class="button">Add New Contact</a></p>
+<p><a href="/contact/add" class="button">Add New Contact</a></p>
 
 <br/>
 	

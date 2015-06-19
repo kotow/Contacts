@@ -1,17 +1,13 @@
-<div id="edit-phone-form" class="dialog-box">
-    <h1>Edit Phone</h1>
+<form method="POST" id="add-phone-form" class="dialog-box">
+    <h1>Edit Group</h1>
     <p>
         <label for="personName">Name:</label>
-        <input type="text" id="person" value="Peter Norton">
-    </p>
-    <p>
-        <label for="phoneNumber">Number:</label>
-        <input type="text" id="phone" value="+1 855 344 567">
+        <input type="text" id="person" value="<?=$cat['name']?>" name="name" />
     </p>
     <p class="buttons">
-        <a href="#" class="button" id="edit">Edit</a>
-        <a href="#" class="button" onclick="logged()">Cancel</a>
+        <input type="submit" class="button" value="Edit" />
+        <a href="/category/">Cancel</a>
     </p>
-</div>
+</form>
 
 <br/>
