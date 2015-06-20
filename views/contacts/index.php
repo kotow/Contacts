@@ -6,15 +6,18 @@
         <th>Address</th>
         <th>Action</th>
     </tr>
-    <?php foreach($contacts as $contact):?>
+    <?php while($contact = $contacts->fetch_assoc()):?>
         <tr>
-            <td> <?=$contact[1];?></td>
-            <td><?=$contact[2];?></td>
-            <td><?=$contact[3];?></td>
-            <td><?=$contact[4];?></td>
-            <td>Edit/Delete/Add to group</td>
+            <td> <a href="/contact/edit/<?=$contact['id'];?>"> <?=htmlspecialchars($contact['name']);?></a></td>
+            <td><?=htmlspecialchars($contact['phone']);?></td>
+            <td><?=htmlspecialchars($contact['email']);?></td>
+            <td><?=htmlspecialchars($contact['address']);?></td>
+            <td>
+                <a href="/contact/edit/<?=$contact['id'];?>"> Edit</a> /
+                <a href="/contact/delete/<?=$contact['id'];?>"> Delete</a>
+            </td>
         </tr>
-    <?php endforeach ?>
+    <?php endwhile ?>
 </table>
 <p><a href="/contact/add" class="button">Add New Contact</a></p>
 

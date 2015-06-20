@@ -19,7 +19,7 @@ class CategoryModel extends HomeModel
         $categories = $this->dbconn->prepare('SELECT id, name FROM groups WHERE userId = ?');
         $categories->bind_param('s', $userId);
         $categories->execute();
-        return $categories->get_result()->fetch_all();
+        return $categories->get_result();
     }
 
     /**
@@ -40,7 +40,7 @@ class CategoryModel extends HomeModel
      */
     public function getContacts($id)
     {
-        $categories = $this->dbconn->prepare('SELECT c.id, c.name, c.phone, c.email, c.address FROM groups as g LEFT JOIN `groups-contacts` as gc ON g.id = gc.groupId LEFT JOIN contacts as c on gc.contactId = c.id WHERE g.id = ?');
+        $categories = $this->dbconn->prepare('SELECT c.id, c.name, c.phone, c.email, c.address, g.name as g FROM groups as g LEFT JOIN `groups-contacts` as gc ON g.id = gc.groupId LEFT JOIN contacts as c on gc.contactId = c.id WHERE g.id = ?');
         $categories->bind_param('s', $id);
         $categories->execute();
         return $categories->get_result();

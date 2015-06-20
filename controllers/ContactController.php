@@ -7,6 +7,10 @@ class ContactController extends HomeController
 
     public function __construct()
     {
+        if(!\Lib\Auth::get_instance()->is_logged_in()) {
+            header( 'Location: ' . DX_ROOT_URL );
+            exit();
+        }
         parent::__construct( get_class(), 'contact', 'views\contacts\\' );
         $user = \Lib\Auth::get_instance()->get_logged_user();
         $this->userId = $user['user_id'];
@@ -25,31 +29,37 @@ class ContactController extends HomeController
         include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
         if(isset($_POST['name'])) {
             $this->model->add($_POST, $this->userId);
-            header( 'Location: ' . DX_ROOT_URL.'category/' );
+            header( 'Location: ' . DX_ROOT_URL.'contact/' );
             exit();
         }
     }
 
     public function edit($id)
     {
-        $cat = $this->model->getById($id);
-        $template_file = DX_ROOT_DIR . $this->views_dir . 'edit.php';
-        include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
-        if(isset($_POST['name'])) {
-            $this->model->edit($id, $_POST['name']);
-            header( 'Location: ' . DX_ROOT_URL.'category/' );
+        $cat = $this->model->getById($id, $this->userId);
+        if($cat!=false) {
+            $template_file = DX_ROOT_DIR . $this->views_dir . 'edit.php';
+            include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
+            if (isset($_POST['name'])) {
+                var_dump($_POST);
+                $this->model->edit($id, $_POST);
+                header('Location: ' . DX_ROOT_URL . 'contact/');
+                exit();
+            }
+        } else {
+            header('Location: ' . DX_ROOT_URL . 'contact/');
             exit();
         }
     }
 
     public function delete($id)
     {
-        $cat = $this->model->getById($id);
+        $cat = $this->model->getById($id, $this->userId);
         $template_file = DX_ROOT_DIR . $this->views_dir . 'delete.php';
         include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
         if(isset($_POST['delete'])) {
             $this->model->delete($id);
-            header( 'Location: ' . DX_ROOT_URL.'category/' );
+            header( 'Location: ' . DX_ROOT_URL.'contact/' );
             exit();
         }
     }

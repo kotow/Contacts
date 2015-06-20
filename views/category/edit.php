@@ -2,7 +2,7 @@
     <h1>Edit Group</h1>
     <p>
         <label for="personName">Name:</label>
-        <input type="text" id="person" value="<?=$cat['name']?>" name="name" />
+        <input type="text" id="person" value="<?=htmlspecialchars($cat['name']);?>" name="name" />
     </p>
     <p class="buttons">
         <input type="submit" class="button" value="Edit" />

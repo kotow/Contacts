@@ -1,3 +1,4 @@
+<h1><?=$group?></h1>
 <table id="phones">
     <tr>
         <th>Name</th>
@@ -8,10 +9,10 @@
     </tr>
     <?php while($row = $contacts->fetch_assoc()):?>
         <tr>
-            <td> <?=$row['name'];?></td>
-            <td><?=$row['phone'];?></td>
-            <td><?=$row['email'];?></td>
-            <td><?=$row['address'];?></td>
+            <td> <?=htmlspecialchars($row['name']);?></td>
+            <td><?=htmlspecialchars($row['phone']);?></td>
+            <td><?=htmlspecialchars($row['email']);?></td>
+            <td><?=htmlspecialchars($row['address']);?></td>
             <td>Edit/Delete</td>
         </tr>
     <?php endwhile ?>

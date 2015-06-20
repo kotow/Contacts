@@ -38,6 +38,7 @@ class CategoryController extends HomeController
     public function get($id)
     {
         $contacts = $this->model->getContacts($id, $this->userId);
+        $group = $this->model->getById($id)['name'];
         $template_file = DX_ROOT_DIR . $this->views_dir . 'contacts.php';
         include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
     }
