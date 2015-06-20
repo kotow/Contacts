@@ -1,5 +1,5 @@
-<form method="POST" id="add-phone-form" class="dialog-box">
-    <h1>Edit Group</h1>
+<divid="add-phone-form" class="dialog-box">
+    <h1>Confirm Delete Contact</h1>
     <p>
         <label for="personName">Name:</label>
         <input type="text" id="person" value="<?=htmlspecialchars($cat['name']);?>" name="name" disabled />
@@ -20,6 +20,6 @@
         <input type="submit" class="button" value="Delete" name="delete" />
         <a href="/contact/">Cancel</a>
     </p>
-</form>
+</div>
 
 <br/>

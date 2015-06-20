@@ -1,5 +1,5 @@
 <form method="POST" id="add-phone-form" class="dialog-box">
-    <h1>Edit Group</h1>
+    <h1>Confirm Delete Group</h1>
     <p>
         <label for="personName">Name:</label>
         <input type="text" id="person" value="<?=htmlspecialchars($cat['name']);?>" name="name" disabled />

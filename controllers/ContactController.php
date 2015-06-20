@@ -63,4 +63,28 @@ class ContactController extends HomeController
             exit();
         }
     }
+
+    public function addTo($id)
+    {
+        if(isset($_POST['group'])) {
+            $this->model->addToGroup($id, $_POST['group']);
+            header('Location: ' . DX_ROOT_URL . 'contact/details/' . $id);
+            exit();
+        }
+    }
+    public function details($id)
+    {
+        $contact = $this->model->details($id, $this->userId);
+        $cat=$contact['contact'];
+        $fields=$contact['fields'];
+        $groups=$contact['groups'];
+        $availableGroups=$contact['available'];
+        $template_file = DX_ROOT_DIR . $this->views_dir . 'details.php';
+        include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
+        if(isset($_POST['delete'])) {
+            $this->model->delete($id);
+            header( 'Location: ' . DX_ROOT_URL.'contact/' );
+            exit();
+        }
+    }
 }

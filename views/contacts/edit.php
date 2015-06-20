@@ -1,5 +1,5 @@
 <form method="POST" id="add-phone-form" class="dialog-box">
-    <h1>Edit Group</h1>
+    <h1>Edit Contact</h1>
     <p>
         <label for="personName">Name:</label>
         <input type="text" id="person" value="<?=$cat['name']?>" name="name" />

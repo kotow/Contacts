@@ -16,13 +16,13 @@ $components = array();
 $controller = 'Master';
 $method = 'index';
 $param = array();
-var_dump($request);
-include_once 'lib/database.php';
-include_once 'lib/auth.php';
-include_once 'controllers/HomeController.php';
-include_once 'controllers/UserController.php';
-include_once 'controllers/CategoryController.php';
-include_once 'controllers/ContactController.php';
+
+include_once 'lib\database.php';
+include_once 'lib\auth.php';
+include_once 'controllers\HomeController.php';
+include_once 'controllers\UserController.php';
+include_once 'controllers\CategoryController.php';
+include_once 'controllers\ContactController.php';
 $master_controller = new \Controllers\HomeController();
 
 if ( ! empty( $request ) ) {

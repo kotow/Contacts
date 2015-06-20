@@ -1,4 +1,10 @@
 <h1><?=$group?></h1>
+<?php
+if($contacts->num_rows == 0){
+    echo "No Contacts";
+    return;
+}
+?>
 <table id="phones">
     <tr>
         <th>Name</th>
