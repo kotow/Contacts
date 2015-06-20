@@ -16,7 +16,7 @@ $components = array();
 $controller = 'Master';
 $method = 'index';
 $param = array();
-
+var_dump($request);
 include_once 'lib/database.php';
 include_once 'lib/auth.php';
 include_once 'controllers/HomeController.php';
