@@ -10,7 +10,7 @@
     </p>
     <p class="buttons">
         <input type="submit" class="button" value="Login">
-        <a href="/master/register" class="link">Register</a>
+        <a href="/home/register" class="link">Register</a>
     <p>
 </form>
 

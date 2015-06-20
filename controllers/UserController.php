@@ -5,7 +5,7 @@ class UserController extends HomeController
 {
     public function __construct()
     {
-        parent::__construct( get_class(), 'user', 'views\user\\' );
+        parent::__construct( get_class(), 'user', 'views/user/' );
     }
 
     public function index()
@@ -22,9 +22,11 @@ class UserController extends HomeController
         if ( empty( $user ) && isset( $_POST['username'] ) && isset( $_POST['password'] ) ) {
             $logged_in = $auth->login( $_POST['username'], $_POST['password'] );
             if ( ! $logged_in ) {
-                $login_text = 'Login not successful.';
+                header( 'Location: ' . DX_ROOT_URL .'home/login');
+                exit();
             } else {
-                $login_text = 'Login was successful! Hi ' . $_POST['username'];
+                $template_file = DX_ROOT_DIR . $this->views_dir . 'index.php';
+                include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
             }
         }
         $template_file = DX_ROOT_DIR . $this->views_dir . 'index.php';

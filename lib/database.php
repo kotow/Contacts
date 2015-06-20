@@ -8,10 +8,10 @@ class Database
 	private function __construct()
     {
 		// Read the config/db.php db settings
-		$host = 'localhost';
-		$username = 'root';
-		$password = '';
-		$database = 'contacts';
+		$host = 'sql310.byethost5.com';
+		$username = 'b5_16347153';
+		$password = 'p3j070';
+		$database = 'b5_16347153_contacts';
 		$db = new \mysqli( $host, $username, $password, $database );
 		self::$db = $db;
 	}

@@ -12,7 +12,7 @@ class CategoryController extends HomeController
             header( 'Location: ' . DX_ROOT_URL );
             exit();
         }
-        parent::__construct( get_class(), 'category', 'views\category\\' );
+        parent::__construct( get_class(), 'category', 'views/category/' );
         $user = \Lib\Auth::get_instance()->get_logged_user();
         $this->userId = $user['user_id'];
     }
@@ -38,7 +38,8 @@ class CategoryController extends HomeController
     public function get($id)
     {
         $contacts = $this->model->getContacts($id, $this->userId);
-        $group = $this->model->getById($id)['name'];
+        $group = $this->model->getById($id);
+        $group=$group['name'];
         $template_file = DX_ROOT_DIR . $this->views_dir . 'contacts.php';
         include_once DX_ROOT_DIR . '/views/layouts/' . $this->layout;
     }

@@ -14,7 +14,7 @@ class HomeController
 		$this->class_name = $class_name;
 		$this->model = $model;
 		$this->views_dir = $views_dir;
-		include_once DX_ROOT_DIR . "models/".$model."Model.php";
+		include_once DX_ROOT_DIR . "models/".ucfirst($model)."Model.php";
 		$model_class = "\Models\\" . ucfirst( $model ) . "Model";
 		$this->model = new $model_class( array( 'table' => 'none' ) );
 		$logged_user = \Lib\Auth::get_instance()->get_logged_user();

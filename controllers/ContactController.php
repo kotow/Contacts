@@ -11,7 +11,7 @@ class ContactController extends HomeController
             header( 'Location: ' . DX_ROOT_URL );
             exit();
         }
-        parent::__construct( get_class(), 'contact', 'views\contacts\\' );
+        parent::__construct( get_class(), 'contact', 'views/contacts/' );
         $user = \Lib\Auth::get_instance()->get_logged_user();
         $this->userId = $user['user_id'];
     }
